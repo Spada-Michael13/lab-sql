@@ -1,0 +1,20 @@
+CREATE TABLE Treno(cod_treno varchar(11) NOT NULL PRIMARY KEY,posti int (11) not null,anno_costruzione int(11) not null );
+
+CREATE TABLE Tratta(id_tratta INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,staz_partenza varchar(30) not null,staz_arrivo varchar(30) not null,distanza decimal(11) not null );
+
+CREATE TABLE Corsa(id_corsa INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                  cod_treno varchar(11) not null,
+                   id_tratta int(11) not null,
+                   dd date not null,
+                   ora_partenza datetime not null,
+                   ora_arrivo datetime not null,
+                   foreign key(cod_treno) references Treno(cod_treno),
+                   foreign key(id_tratta) references Tratta(id_tratta)
+                  );
+
+CREATE TABLE Biglietto(id_biglietto INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                   id_corsa int(11) not null,
+                   nome_utente varchar(20),
+                   posto int(11) not null,
+                   foreign key(id_corsa) references Corsa(id_corsa)
+                  );
