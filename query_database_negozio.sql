@@ -23,3 +23,6 @@ from 4CTL_ordini
 where data_ordine>'2024/05/31' and data_ordine<'2024/07/01';
 
 select s.cod_seriale,d.nome from 4CTL_prodotti s ,4CTL_modelli_prodotto d;
+
+SELECT s.id_ordine,b.cognome,n.nome,c.cod_seriale
+from 4CTL_ordini s,4CTL_clienti b,4CTL_modelli_prodotto n,4CTL_prodotti c;
